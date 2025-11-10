@@ -1,49 +1,95 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>App Store</title>
+    <meta charset="UTF-8">
+    <title>Yono All Games - Official App Store</title>
+    <meta name="description" content="Welcome to Yono All Games, your official source for all our mobile games. Download and play the latest titles from Yono Games.">
+    <meta name="keywords" content="yono, all games, yono all games, yono games, mobile games">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="visitor-counter">
+                    <i class="fas fa-eye"></i>
+                    <span id="visitorCount">0</span>
+                </div>
+                <div class="social-share">
+                    <a href="https://wa.me/?text=Check%20out%20Yono%20All%20Games!%20https://yono-all-games.github.io/" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://t.me/share/url?url=https://yono-all-games.github.io/&text=Check%20out%20Yono%20All%20Games!" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </div>
+            <h1>Yono All Games</h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for games...">
+            </div>
+        </div>
+    </header>
     <div class="container">
-        <h1>App Store</h1>
         <div class="app-list">
         </div>
     </div>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let count = localStorage.getItem('visitorCount');
+            if (count === null) {
+                count = 1;
+            } else {
+                count = parseInt(count) + 1;
+            }
+            localStorage.setItem('visitorCount', count);
+            document.getElementById('visitorCount').innerText = count;
+        });
+
         fetch('apps.json')
             .then(response => response.json())
             .then(data => {
                 const appList = document.querySelector('.app-list');
-                data.apps.forEach(app => {
-                    const appCard = document.createElement('div');
-                    appCard.classList.add('app-card');
+                const searchInput = document.getElementById('searchInput');
 
-                    const appIcon = document.createElement('img');
-                    appIcon.src = app.icon;
-                    appCard.appendChild(appIcon);
+                function renderApps(apps) {
+                    appList.innerHTML = '';
+                    apps.forEach(app => {
+                        const appCard = document.createElement('div');
+                        appCard.classList.add('app-card');
 
-                    const appInfo = document.createElement('div');
-                    appInfo.classList.add('app-info');
-                    appCard.appendChild(appInfo);
+                        const appIcon = document.createElement('img');
+                        appIcon.src = app.icon;
+                        appIcon.alt = app.name + " icon";
+                        appCard.appendChild(appIcon);
 
-                    const appName = document.createElement('h3');
-                    appName.textContent = app.name;
-                    appInfo.appendChild(appName);
+                        const appInfo = document.createElement('div');
+                        appInfo.classList.add('app-info');
+                        appCard.appendChild(appInfo);
 
-                    const appDescription = document.createElement('p');
-                    appDescription.textContent = app.description;
-                    appInfo.appendChild(appDescription);
+                        const appName = document.createElement('h3');
+                        appName.textContent = app.name;
+                        appInfo.appendChild(appName);
 
-                    const downloadLink = document.createElement('a');
-                    downloadLink.href = app.referral;
-                    downloadLink.textContent = 'Download';
-                    downloadLink.classList.add('download-button');
-                    appCard.appendChild(downloadLink);
+                        const appDescription = document.createElement('p');
+                        appDescription.textContent = app.description;
+                        appInfo.appendChild(appDescription);
 
-                    appList.appendChild(appCard);
+                        const downloadLink = document.createElement('a');
+                        downloadLink.href = app.referral;
+                        downloadLink.textContent = 'Download';
+                        downloadLink.classList.add('download-button');
+                        appCard.appendChild(downloadLink);
+
+                        appList.appendChild(appCard);
+                    });
+                }
+
+                renderApps(data.apps);
+
+                searchInput.addEventListener('input', () => {
+                    const searchTerm = searchInput.value.toLowerCase();
+                    const filteredApps = data.apps.filter(app => app.name.toLowerCase().includes(searchTerm));
+                    renderApps(filteredApps);
                 });
             });
     </script>

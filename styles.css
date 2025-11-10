@@ -9,16 +9,64 @@ body {
     padding: 10px;
 }
 
-h1 {
-    font-size: 24px;
-    font-weight: 600;
-    margin: 0 0 20px 10px;
+.header {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.visitor-counter {
+    font-size: 14px;
+    color: #555;
+}
+
+.visitor-counter .fa-eye {
+    margin-right: 5px;
+}
+
+.social-share a {
+    font-size: 20px;
+    color: #555;
+    margin-left: 15px;
+    transition: color 0.2s ease;
+}
+
+.social-share a:hover {
+    color: #007aff;
+}
+
+.header h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.search-container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+#searchInput {
+    width: 80%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    font-size: 16px;
 }
 
 .app-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: 20px;
 }
 
 .app-card {
