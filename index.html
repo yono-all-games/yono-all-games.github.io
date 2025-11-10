@@ -2,10 +2,15 @@
 <html ⚡ lang="en">
 <head>
   <meta charset="utf-8">
-  <title>App Referrals - Mobile Apps & Games</title>
-  <link rel="canonical" href="$SITE_URL">
+  <title>Yono All Games - Download APKs & Gaming Apps | Official Site</title>
+  <link rel="canonical" href="https://yono-all-games.github.io/">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-  <meta name="description" content="Find and share referral links for your favorite mobile apps and games">
+  <meta name="description" content="Download all Yono games in one place! Access official Yono Gaming apps, slots, rummy & casino games. Get exclusive referral bonuses and instant APK downloads.">
+  <meta name="keywords" content="yono all games, yono games download, yono games apk, yono rummy, yono slots, yono casino games">
+  <meta property="og:title" content="Yono All Games - Download APKs & Gaming Apps">
+  <meta property="og:description" content="Download all Yono games in one place! Access official Yono Gaming apps, slots, rummy & casino games with exclusive referral bonuses.">
+  <meta property="og:url" content="https://yono-all-games.github.io/">
+  <meta property="og:type" content="website">
   <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <!-- AMP Components -->
@@ -92,11 +97,24 @@
     .app-desc {
       font-size: 12px;
       color: var(--text-secondary);
-      margin: 0;
+      margin: 0 0 8px;
       display: -webkit-box;
+      display: -moz-box;
       -webkit-line-clamp: 2;
+      -moz-line-clamp: 2;
+      line-clamp: 2;
       -webkit-box-orient: vertical;
+      -moz-box-orient: vertical;
       overflow: hidden;
+    }
+
+    .download-tag {
+      background: var(--primary-color);
+      color: white;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 12px;
+      display: inline-block;
     }
 
     /* Bottom Navigation */
@@ -127,40 +145,111 @@
 <body>
   <!-- Header -->
   <header class="header">
-    <h1 style="margin: 0; font-size: 20px;">App Referrals</h1>
+    <h1 style="margin: 0; font-size: 20px;">Yono All Games</h1>
     <form method="GET" 
           action="."
           target="_top">
       <input type="search"
              name="search"
-             placeholder="Search apps..."
+             placeholder="Search Yono games..."
              class="search-bar">
     </form>
   </header>
 
-  <!-- App Grid -->
-  <amp-list width="auto"
-            height="500"
-            layout="fixed-height"
-            src="data/apps.json"
-            binding="no">
-    <template type="amp-mustache">
-      <div class="app-grid">
-        {{#apps}}
-        <a href="app.html?id={{id}}" class="app-card">
-          <amp-img class="app-icon"
-                   src="{{icon}}"
-                   width="64"
-                   height="64"
-                   layout="fixed">
-          </amp-img>
-          <h3 class="app-name">{{name}}</h3>
-          <p class="app-desc">{{description}}</p>
-        </a>
-        {{/apps}}
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2 class="hero-title">Download All Yono Games</h2>
+      <p class="hero-subtitle">Access the complete collection of official Yono gaming apps</p>
+      <div class="category-tags">
+        <span class="tag">Rummy</span>
+        <span class="tag">Slots</span>
+        <span class="tag">Casino</span>
+        <span class="tag">Arcade</span>
       </div>
-    </template>
-  </amp-list>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories">
+    <h2 class="section-title">Popular Yono Game Categories</h2>
+    <div class="category-grid">
+      <a href="#rummy" class="category-card">
+        <span class="category-icon">🎲</span>
+        <h3>Yono Rummy Games</h3>
+        <p>Classic card games with rewards</p>
+      </a>
+      <a href="#slots" class="category-card">
+        <span class="category-icon">🎰</span>
+        <h3>Yono Slot Games</h3>
+        <p>Exciting slot machines</p>
+      </a>
+      <a href="#casino" class="category-card">
+        <span class="category-icon">🎮</span>
+        <h3>Yono Casino Games</h3>
+        <p>Premium casino experience</p>
+      </a>
+      <a href="#arcade" class="category-card">
+        <span class="category-icon">🕹️</span>
+        <h3>Yono Arcade Games</h3>
+        <p>Classic arcade fun</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Featured Apps Section -->
+  <section class="featured-apps">
+    <h2 class="section-title">Popular Yono Games</h2>
+    <amp-list width="auto"
+              height="500"
+              layout="fixed-height"
+              src="data/apps.json"
+              binding="no">
+      <template type="amp-mustache">
+        <div class="app-grid">
+          {{#apps}}
+          <a href="app.html?id={{id}}" class="app-card" title="Download {{name}} - Official Yono Game">
+            <amp-img class="app-icon"
+                     src="{{icon}}"
+                     width="64"
+                     height="64"
+                     layout="fixed"
+                     alt="{{name}} - Yono Game Icon">
+            </amp-img>
+            <h3 class="app-name">{{name}}</h3>
+            <p class="app-desc">{{description}}</p>
+            <span class="download-tag">Download Now</span>
+          </a>
+          {{/apps}}
+        </div>
+      </template>
+    </amp-list>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq" id="faq">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    
+    <div class="faq-item">
+      <h3 class="faq-question">What games are available on Yono All Games?</h3>
+      <p class="faq-answer">Yono All Games offers a wide variety of gaming options including Rummy, Slots, Casino games, and Arcade games. Popular titles include Yono Rummy, Yono Slots, Yono VIP, and many more exciting games.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="faq-question">How do I download Yono games?</h3>
+      <p class="faq-answer">To download any Yono game, simply click on the game you want to play, then use the referral link provided. The link will take you directly to the official download page where you can get the APK or install through the app store.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="faq-question">Are these official Yono game links?</h3>
+      <p class="faq-answer">Yes, all game links on our platform are official Yono referral links. Each link provides direct access to the authentic game downloads with exclusive referral bonuses for new players.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="faq-question">Which is the most popular Yono game?</h3>
+      <p class="faq-answer">Yono Rummy and Yono Slots are among the most popular games in our collection. However, all Yono games offer unique features and exciting gameplay experiences for different types of players.</p>
+    </div>
+  </section>
 
   <!-- Bottom Navigation -->
   <nav class="bottom-nav">
