@@ -2,15 +2,19 @@
 <html ⚡ lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Yono All Games - Download APKs & Gaming Apps | Official Site</title>
+  <title>YONO ALL GAMES DOWNLOAD - Official Gaming Apps & APKs</title>
   <link rel="canonical" href="https://yono-all-games.github.io/">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-  <meta name="description" content="Download all Yono games in one place! Access official Yono Gaming apps, slots, rummy & casino games. Get exclusive referral bonuses and instant APK downloads.">
-  <meta name="keywords" content="yono all games, yono games download, yono games apk, yono rummy, yono slots, yono casino games">
-  <meta property="og:title" content="Yono All Games - Download APKs & Gaming Apps">
-  <meta property="og:description" content="Download all Yono games in one place! Access official Yono Gaming apps, slots, rummy & casino games with exclusive referral bonuses.">
+  <meta name="description" content="⭐ YONO ALL GAMES DOWNLOAD - Get official APKs for Yono Rummy, Slots & Casino games. Exclusive referral codes & instant downloads available!">
+  <meta name="keywords" content="yono all games download, yono games apk download, yono rummy download, yono slots download, yono casino games, yono gaming apps">
+  <meta property="og:title" content="YONO ALL GAMES DOWNLOAD - Official Gaming Apps & APKs">
+  <meta property="og:description" content="⭐ Download all YONO games with official APKs! Get Yono Rummy, Slots & Casino games with exclusive referral bonuses. Instant downloads available!">
   <meta property="og:url" content="https://yono-all-games.github.io/">
   <meta property="og:type" content="website">
+  <meta name="google-site-verification" content="$YOUR_VERIFICATION_CODE">
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/yono-games.svg">
+  <link rel="apple-touch-icon" href="/assets/icons/yono-games-180.png">
+  <meta name="theme-color" content="#944cf3">
   <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <!-- AMP Components -->
@@ -23,10 +27,14 @@
   
   <style amp-custom>
     :root {
-      --primary-color: #944cf3;
+      --primary-color: #166534;
+      --primary-light: #15803d;
+      --primary-dark: #14532d;
+      --accent-color: #facc15;
       --surface-color: #ffffff;
       --text-primary: #333333;
       --text-secondary: #666666;
+      --warning-color: #dc2626;
     }
 
     body {
@@ -59,39 +67,130 @@
       box-sizing: border-box;
     }
 
+    /* Age Warning */
+    .age-warning {
+      background-color: var(--warning-color);
+      color: white;
+      text-align: center;
+      padding: 12px;
+      position: relative;
+      font-size: 14px;
+    }
+
+    .close-warning {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 5px;
+    }
+
     /* App Card Styles */
     .app-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 16px;
       padding: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .app-card {
       background: var(--surface-color);
       border-radius: 12px;
       padding: 16px;
-      text-decoration: none;
       color: inherit;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       transition: transform 0.2s;
+      border: 1px solid rgba(22, 101, 52, 0.1);
     }
 
-    .app-card:active {
-      transform: scale(0.98);
+    .app-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
     }
 
     .app-icon {
       width: 64px;
       height: 64px;
       border-radius: 16px;
-      margin-bottom: 8px;
+      margin-right: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .app-info {
+      flex: 1;
     }
 
     .app-name {
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 600;
-      margin: 8px 0 4px;
+      margin: 0 0 4px;
+      color: var(--primary-dark);
+    }
+
+    .app-category {
+      font-size: 12px;
+      color: var(--primary-color);
+      background: rgba(22, 101, 52, 0.1);
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    .app-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .download-button {
+      flex: 2;
+      background: var(--primary-color);
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .download-button:hover {
+      background: var(--primary-dark);
+    }
+
+    .details-button {
+      flex: 1;
+      background: rgba(22, 101, 52, 0.1);
+      color: var(--primary-color);
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .details-button:hover {
+      background: rgba(22, 101, 52, 0.2);
+    }
+
+    .download-icon {
+      font-size: 18px;
     }
 
     .app-desc {
@@ -143,6 +242,12 @@
   </style>
 </head>
 <body>
+  <!-- Age Warning Banner -->
+  <div class="age-warning">
+    <strong>⚠️ 18+ Only:</strong> This content is intended for adults aged 18 and above. Please verify your age before downloading.
+    <button onclick="this.parentElement.style.display='none'" class="close-warning">✕</button>
+  </div>
+
   <!-- Header -->
   <header class="header">
     <h1 style="margin: 0; font-size: 20px;">Yono All Games</h1>
@@ -159,13 +264,35 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <h2 class="hero-title">Download All Yono Games</h2>
-      <p class="hero-subtitle">Access the complete collection of official Yono gaming apps</p>
+      <div class="brand-logo">
+        <amp-img src="/assets/icons/yono-games.svg"
+                 width="80"
+                 height="80"
+                 layout="fixed"
+                 alt="YONO ALL GAMES DOWNLOAD">
+        </amp-img>
+      </div>
+      <h2 class="hero-title">YONO ALL GAMES DOWNLOAD</h2>
+      <p class="hero-subtitle">🎮 Official Gaming Apps & Referral Links</p>
+      <div class="download-stats">
+        <div class="stat">
+          <span class="stat-number">40+</span>
+          <span class="stat-label">Games</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">⚡</span>
+          <span class="stat-label">Instant APK</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">🎁</span>
+          <span class="stat-label">Bonuses</span>
+        </div>
+      </div>
       <div class="category-tags">
-        <span class="tag">Rummy</span>
-        <span class="tag">Slots</span>
-        <span class="tag">Casino</span>
-        <span class="tag">Arcade</span>
+        <span class="tag">Rummy Games</span>
+        <span class="tag">Slot Games</span>
+        <span class="tag">Casino Games</span>
+        <span class="tag">Arcade Games</span>
       </div>
     </div>
   </section>
@@ -199,28 +326,48 @@
 
   <!-- Featured Apps Section -->
   <section class="featured-apps">
-    <h2 class="section-title">Popular Yono Games</h2>
+    <h2 class="section-title">Download YONO Games</h2>
     <amp-list width="auto"
-              height="500"
+              height="auto"
               layout="fixed-height"
               src="data/apps.json"
+              items="apps"
               binding="no">
       <template type="amp-mustache">
         <div class="app-grid">
-          {{#apps}}
-          <a href="app.html?id={{id}}" class="app-card" title="Download {{name}} - Official Yono Game">
-            <amp-img class="app-icon"
-                     src="{{icon}}"
-                     width="64"
-                     height="64"
-                     layout="fixed"
-                     alt="{{name}} - Yono Game Icon">
-            </amp-img>
-            <h3 class="app-name">{{name}}</h3>
+          {{#.}}
+          <div class="app-card">
+            <div class="app-header">
+              <amp-img class="app-icon"
+                       src="{{icon}}"
+                       width="64"
+                       height="64"
+                       layout="fixed"
+                       alt="{{name}} - Download YONO Game">
+              </amp-img>
+              <div class="app-info">
+                <h3 class="app-name">{{name}}</h3>
+                <span class="app-category">{{category}}</span>
+              </div>
+            </div>
             <p class="app-desc">{{description}}</p>
-            <span class="download-tag">Download Now</span>
-          </a>
-          {{/apps}}
+            <div class="app-actions">
+              <a href="{{referral}}" 
+                 class="download-button" 
+                 target="_blank" 
+                 rel="noopener"
+                 title="Download {{name}} APK">
+                <span class="download-icon">⬇️</span>
+                Download APK
+              </a>
+              <a href="app.html?id={{id}}" 
+                 class="details-button"
+                 title="More details about {{name}}">
+                More Info
+              </a>
+            </div>
+          </div>
+          {{/.}}
         </div>
       </template>
     </amp-list>
