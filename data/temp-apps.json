@@ -1,0 +1,57 @@
+{"apps": [
+  {
+    "id": "101z",
+    "name": "101z",
+    "icon": "/assets/icons/101z.svg",
+    "description": "Experience premium gaming with exciting rewards. Get instant bonus on sign up!",
+    "referral": "https://101zvip7.com/?code=398G6QR31H2&t=1762765894",
+    "category": "casino",
+    "rating": 4.8,
+    "downloads": "100K+",
+    "features": ["Instant Bonus", "24/7 Support", "Fast Withdrawal"]
+  },
+  {
+    "id": "567-slots",
+    "name": "567 Slots",
+    "icon": "/assets/icons/567-slots.svg",
+    "description": "Play Vegas-style slots with huge jackpots. New games added weekly!",
+    "referral": "https://567slots-agent.com/?code=QCGRZE1X384&t=1762765939",
+    "category": "slots",
+    "rating": 4.7,
+    "downloads": "500K+",
+    "features": ["Progressive Jackpots", "Daily Bonus", "VIP Club"]
+  },
+  {
+    "id": "777-game",
+    "name": "777 Game",
+    "icon": "/assets/icons/777-game.svg",
+    "description": "The luckiest casino games with massive rewards and tournaments",
+    "referral": "https://www.777game3.com/?code=H533LN3EDLK&t=1762765975",
+    "category": "casino",
+    "rating": 4.9,
+    "downloads": "1M+",
+    "features": ["Live Casino", "Big Wins", "Weekly Tournaments"]
+  },
+  {
+    "id": "789-jackpot",
+    "name": "789 Jackpot",
+    "icon": "/assets/icons/789-jackpot.svg",
+    "description": "Win life-changing jackpots with exciting casino games!",
+    "referral": "https://789jackpots.in/?code=J7ZEWQ1B6K7&t=1762766006",
+    "category": "casino",
+    "rating": 4.6,
+    "downloads": "250K+",
+    "features": ["Mega Jackpots", "Live Tables", "Quick Payouts"]
+  },
+  {
+    "id": "abc-rummy",
+    "name": "ABC Rummy",
+    "icon": "/assets/icons/abc-rummy.svg",
+    "description": "Play classic rummy games with real players. Win big prizes!",
+    "referral": "https://www.abcrummy00.com/?code=75CZ3W6XRS2&t=1762766047",
+    "category": "rummy",
+    "rating": 4.8,
+    "downloads": "750K+",
+    "features": ["Multiple Variants", "Cash Games", "Tournaments"]
+  }
+]}

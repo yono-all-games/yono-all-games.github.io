@@ -93,20 +93,126 @@
     .app-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 16px;
-      padding: 16px;
+      gap: 20px;
+      padding: 20px;
       max-width: 1200px;
       margin: 0 auto;
     }
 
     .app-card {
-      background: var(--surface-color);
-      border-radius: 12px;
-      padding: 16px;
-      color: inherit;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
+      transition: all 0.3s ease;
+      position: relative;
       border: 1px solid rgba(22, 101, 52, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+      border-color: var(--primary-color);
+    }
+
+    .app-banner {
+      height: 100px;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .app-icon-wrapper {
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      bottom: -40px;
+      left: 20px;
+      background: white;
+      border-radius: 20px;
+      padding: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .app-icon {
+      border-radius: 16px;
+      background: white;
+    }
+
+    .app-info {
+      padding: 50px 20px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-name {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 8px;
+      color: var(--primary-dark);
+    }
+
+    .app-category {
+      font-size: 14px;
+      color: var(--primary-color);
+      background: rgba(22, 101, 52, 0.1);
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .app-desc {
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0 0 16px;
+    }
+
+    .app-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .download-button {
+      flex: 2;
+      background: var(--primary-color);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 12px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+
+    .download-button:hover {
+      background: var(--primary-dark);
+    }
+
+    .details-button {
+      flex: 1;
+      background: rgba(22, 101, 52, 0.1);
+      color: var(--primary-color);
+      padding: 12px 24px;
+      border-radius: 12px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .details-button:hover {
+      background: rgba(22, 101, 52, 0.2);
     }
 
     .app-card:hover {
