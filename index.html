@@ -22,6 +22,23 @@
   <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
   <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
   <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+  <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+
+  <amp-state id="appState">
+    <script type="application/json">
+      {
+        "currentView": "home",
+        "selectedAppId": null,
+        "selectedApp": null
+      }
+    </script>
+  </amp-state>
+
+  <amp-state id="appData" src="/data/apps.json"></amp-state>
+
+  <amp-bind-macro id="getAppById" arguments="appId, appData">
+    <amp-bind-macro-result expression="appData.apps.find(app => app.id === appId)"></amp-bind-macro-result>
+  </amp-bind-macro>
   <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
   <noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
   
@@ -349,13 +366,13 @@
 </head>
 <body>
   <!-- Age Warning Banner -->
-  <div class="age-warning">
+  <div class="age-warning" [hidden]="appState.currentView !== 'home'">
     <strong>⚠️ 18+ Only:</strong> This content is intended for adults aged 18 and above. Please verify your age before downloading.
     <button onclick="this.parentElement.style.display='none'" class="close-warning">✕</button>
   </div>
 
-  <!-- Header -->
-  <header class="header">
+  <!-- Header for Home View -->
+  <header class="header" [hidden]="appState.currentView !== 'home'">
     <h1 style="margin: 0; font-size: 20px;">Yono All Games</h1>
     <form method="GET" 
           action="."
@@ -367,157 +384,206 @@
     </form>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="brand-logo">
-        <amp-img src="/assets/icons/yono-games.svg"
-                 width="80"
-                 height="80"
-                 layout="fixed"
-                 alt="YONO ALL GAMES DOWNLOAD">
-        </amp-img>
-      </div>
-      <h2 class="hero-title">YONO ALL GAMES DOWNLOAD</h2>
-      <p class="hero-subtitle">🎮 Official Gaming Apps & Referral Links</p>
-      <div class="download-stats">
-        <div class="stat">
-          <span class="stat-number">40+</span>
-          <span class="stat-label">Games</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">⚡</span>
-          <span class="stat-label">Instant APK</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">🎁</span>
-          <span class="stat-label">Bonuses</span>
-        </div>
-      </div>
-      <div class="category-tags">
-        <span class="tag">Rummy Games</span>
-        <span class="tag">Slot Games</span>
-        <span class="tag">Casino Games</span>
-        <span class="tag">Arcade Games</span>
-      </div>
-    </div>
-  </section>
+  <!-- Header for App Detail View -->
+  <header class="header" [hidden]="appState.currentView !== 'appDetail'">
+    <a on="tap:AMP.setState({appState: {currentView: 'home', selectedAppId: null, selectedApp: null}})" class="back-button">←</a>
+    <span>App Details</span>
+  </header>
 
-  <!-- Categories Section -->
-  <section class="categories">
-    <h2 class="section-title">Popular Yono Game Categories</h2>
-    <div class="category-grid">
-      <a href="#rummy" class="category-card">
-        <span class="category-icon">🎲</span>
-        <h3>Yono Rummy Games</h3>
-        <p>Classic card games with rewards</p>
-      </a>
-      <a href="#slots" class="category-card">
-        <span class="category-icon">🎰</span>
-        <h3>Yono Slot Games</h3>
-        <p>Exciting slot machines</p>
-      </a>
-      <a href="#casino" class="category-card">
-        <span class="category-icon">🎮</span>
-        <h3>Yono Casino Games</h3>
-        <p>Premium casino experience</p>
-      </a>
-      <a href="#arcade" class="category-card">
-        <span class="category-icon">🕹️</span>
-        <h3>Yono Arcade Games</h3>
-        <p>Classic arcade fun</p>
-      </a>
-    </div>
-  </section>
+  <!-- Home View Content -->
+  <div [hidden]="appState.currentView !== 'home'">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="brand-logo">
+          <amp-img src="/assets/icons/yono-games.svg"
+                   width="80"
+                   height="80"
+                   layout="fixed"
+                   alt="YONO ALL GAMES DOWNLOAD">
+          </amp-img>
+        </div>
+        <h2 class="hero-title">YONO ALL GAMES DOWNLOAD</h2>
+        <p class="hero-subtitle">🎮 Official Gaming Apps & Referral Links</p>
+        <div class="download-stats">
+          <div class="stat">
+            <span class="stat-number">40+</span>
+            <span class="stat-label">Games</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">⚡</span>
+            <span class="stat-label">Instant APK</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">🎁</span>
+            <span class="stat-label">Bonuses</span>
+          </div>
+        </div>
+        <div class="category-tags">
+          <span class="tag">Rummy Games</span>
+          <span class="tag">Slot Games</span>
+          <span class="tag">Casino Games</span>
+          <span class="tag">Arcade Games</span>
+        </div>
+      </div>
+    </section>
 
-  <!-- Featured Apps Section -->
-  <section class="featured-apps">
-    <h2 class="section-title">Download YONO Games</h2>
-    <div class="app-grid">
-      <amp-list width="auto"
-                height="container"
-                layout="fixed-height"
-                src="/data/apps.json"
-                binding="no">
-        <template type="amp-mustache">
-          {{#apps}}
-          <div class="app-card">
-            <div class="app-banner">
-              <amp-img class="app-icon"
-                       src="{{icon}}"
-                       width="80"
-                       height="80"
-                       layout="fixed"
-                       alt="{{name}} - Download YONO Game">
-              </amp-img>
-              <div class="app-info">
-                <h3 class="app-name">{{name}}</h3>
-                <span class="app-category">{{category}}</span>
+    <!-- Categories Section -->
+    <section class="categories">
+      <h2 class="section-title">Popular Yono Game Categories</h2>
+      <div class="category-grid">
+        <a href="#rummy" class="category-card">
+          <span class="category-icon">🎲</span>
+          <h3>Yono Rummy Games</h3>
+          <p>Classic card games with rewards</p>
+        </a>
+        <a href="#slots" class="category-card">
+          <span class="category-icon">🎰</span>
+          <h3>Yono Slot Games</h3>
+          <p>Exciting slot machines</p>
+        </a>
+        <a href="#casino" class="category-card">
+          <span class="category-icon">🎮</span>
+          <h3>Yono Casino Games</h3>
+          <p>Premium casino experience</p>
+        </a>
+        <a href="#arcade" class="category-card">
+          <span class="category-icon">🕹️</span>
+          <h3>Yono Arcade Games</h3>
+          <p>Classic arcade fun</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Featured Apps Section -->
+    <section class="featured-apps">
+      <h2 class="section-title">Download YONO Games</h2>
+      <div class="app-grid">
+        <amp-list width="auto"
+                  height="container"
+                  layout="fixed-height"
+                  src="/data/apps.json"
+                  binding="no">
+          <template type="amp-mustache">
+            {{#apps}}
+            <div class="app-card">
+              <div class="app-banner">
+                <amp-img class="app-icon"
+                         src="{{icon}}"
+                         width="80"
+                         height="80"
+                         layout="fixed"
+                         alt="{{name}} - Download YONO Game">
+                </amp-img>
+                <div class="app-info">
+                  <h3 class="app-name">{{name}}</h3>
+                  <span class="app-category">{{category}}</span>
+                </div>
+              </div>
+              <p class="app-desc">{{description}}</p>
+              <div class="app-actions">
+                <a href="{{referral}}" 
+                   class="download-button" 
+                   target="_blank" 
+                   rel="noopener"
+                   title="Download {{name}} APK">
+                  <span class="download-icon">⬇️</span>
+                  Download APK
+                </a>
+                <button on="tap:AMP.setState({appState: {currentView: 'appDetail', selectedAppId: '{{id}}', selectedApp: getAppById('{{id}}', appData)}})"
+                        class="details-button"
+                        title="More details about {{name}}">
+                  More Info
+                </button>
               </div>
             </div>
-            <p class="app-desc">{{description}}</p>
-            <div class="app-actions">
-              <a href="{{referral}}" 
-                 class="download-button" 
-                 target="_blank" 
-                 rel="noopener"
-                 title="Download {{name}} APK">
-                <span class="download-icon">⬇️</span>
-                Download APK
-              </a>
-              <a href="app.html?id={{id}}" 
-                 class="details-button"
-                 title="More details about {{name}}">
-                More Info
-              </a>
-            </div>
-          </div>
-          {{/apps}}
+            {{/apps}}
+          </template>
+        </amp-list>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      
+      <div class="faq-item">
+        <h3 class="faq-question">What games are available on Yono All Games?</h3>
+        <p class="faq-answer">Yono All Games offers a wide variety of gaming options including Rummy, Slots, Casino games, and Arcade games. Popular titles include Yono Rummy, Yono Slots, Yono VIP, and many more exciting games.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">How do I download Yono games?</h3>
+        <p class="faq-answer">To download any Yono game, simply click on the game you want to play, then use the referral link provided. The link will take you directly to the official download page where you can get the APK or install through the app store.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Are these official Yono game links?</h3>
+        <p class="faq-answer">Yes, all game links on our platform are official Yono referral links. Each link provides direct access to the authentic game downloads with exclusive referral bonuses for new players.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Which is the most popular Yono game?</h3>
+        <p class="faq-answer">Yono Rummy and Yono Slots are among the most popular games in our collection. However, all Yono games offer unique features and exciting gameplay experiences for different types of players.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- App Detail View Content -->
+  <div [hidden]="appState.currentView !== 'appDetail'">
+    <div class="app-container" [hidden]="!appState.selectedApp.id">
+      <div class="app-header">
+        <amp-img class="app-icon"
+                 [src]="appState.selectedApp.icon"
+                 width="80"
+                 height="80"
+                 layout="fixed">
+        </amp-img>
+        <div class="app-info">
+          <h1 [text]="appState.selectedApp.name"></h1>
+          <span class="app-category" [text]="appState.selectedApp.category"></span>
         </div>
-      </template>
-    </amp-list>
-  </section>
+      </div>
 
-  <!-- FAQ Section -->
-  <section class="faq" id="faq">
-    <h2 class="section-title">Frequently Asked Questions</h2>
-    
-    <div class="faq-item">
-      <h3 class="faq-question">What games are available on Yono All Games?</h3>
-      <p class="faq-answer">Yono All Games offers a wide variety of gaming options including Rummy, Slots, Casino games, and Arcade games. Popular titles include Yono Rummy, Yono Slots, Yono VIP, and many more exciting games.</p>
+      <div class="app-description">
+        <p [text]="appState.selectedApp.description"></p>
+      </div>
+
+      <a [href]="appState.selectedApp.referral"
+         class="referral-button"
+         target="_blank"
+         rel="noopener">
+        Get App Now
+      </a>
+
+      <div class="social-share">
+        <amp-social-share type="system" width="40" height="40"></amp-social-share>
+        <amp-social-share type="whatsapp" width="40" height="40"></amp-social-share>
+        <amp-social-share type="facebook" width="40" height="40"></amp-social-share>
+        <amp-social-share type="twitter" width="40" height="40"></amp-social-share>
+      </div>
     </div>
 
-    <div class="faq-item">
-      <h3 class="faq-question">How do I download Yono games?</h3>
-      <p class="faq-answer">To download any Yono game, simply click on the game you want to play, then use the referral link provided. The link will take you directly to the official download page where you can get the APK or install through the app store.</p>
+    <div [hidden]="appState.selectedApp.id">
+      <p style="text-align: center; margin-top: 50px;">App not found or invalid ID.</p>
     </div>
-
-    <div class="faq-item">
-      <h3 class="faq-question">Are these official Yono game links?</h3>
-      <p class="faq-answer">Yes, all game links on our platform are official Yono referral links. Each link provides direct access to the authentic game downloads with exclusive referral bonuses for new players.</p>
-    </div>
-
-    <div class="faq-item">
-      <h3 class="faq-question">Which is the most popular Yono game?</h3>
-      <p class="faq-answer">Yono Rummy and Yono Slots are among the most popular games in our collection. However, all Yono games offer unique features and exciting gameplay experiences for different types of players.</p>
-    </div>
-  </section>
+  </div>
 
   <!-- Bottom Navigation -->
   <nav class="bottom-nav">
-    <a href="index.html" class="nav-item active">
+    <a href="#" on="tap:AMP.setState({appState: {currentView: 'home', selectedAppId: null, selectedApp: null}})" class="nav-item" [class]="appState.currentView === 'home' ? 'nav-item active' : 'nav-item'">
       <div>🏠</div>
       Home
     </a>
-    <a href="#categories" class="nav-item">
+    <a href="#categories" class="nav-item" [class]="appState.currentView === 'categories' ? 'nav-item active' : 'nav-item'">
       <div>📱</div>
       Categories
     </a>
-    <a href="#faq" class="nav-item">
+    <a href="#faq" class="nav-item" [class]="appState.currentView === 'faq' ? 'nav-item active' : 'nav-item'">
       <div>❓</div>
       FAQ
     </a>
-    <a href="#contact" class="nav-item">
+    <a href="#contact" class="nav-item" [class]="appState.currentView === 'contact' ? 'nav-item active' : 'nav-item'">
       <div>📧</div>
       Contact
     </a>
