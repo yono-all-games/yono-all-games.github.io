@@ -1,5 +1,5 @@
 <!doctype html>
-<html ⚡ lang="en">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>YONO ALL GAMES DOWNLOAD - Official Gaming Apps & APKs</title>
@@ -15,34 +15,9 @@
   <link rel="icon" type="image/svg+xml" href="/assets/icons/yono-games.svg">
   <link rel="apple-touch-icon" href="/assets/icons/yono-games-180.png">
   <meta name="theme-color" content="#944cf3">
-  <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
-  <script async src="https://cdn.ampproject.org/v0.js"></script>
-  <!-- AMP Components -->
-  <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
-  <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
-  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
-  <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
-  <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
 
-  <amp-state id="appState">
-    <script type="application/json">
-      {
-        "currentView": "home",
-        "selectedAppId": null,
-        "selectedApp": null
-      }
-    </script>
-  </amp-state>
-
-  <amp-state id="appData" src="/data/apps.json"></amp-state>
-
-  <amp-bind-macro id="getAppById" arguments="appId, appData">
-    <amp-bind-macro-result expression="appData.apps.find(app => app.id === appId)"></amp-bind-macro-result>
-  </amp-bind-macro>
-  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
-  <noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
   
-  <style amp-custom>
+  <style>
     :root {
       --primary-color: #166534;
       --primary-light: #15803d;
@@ -71,6 +46,14 @@
       padding: 1rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 20px;
     }
 
     .search-bar {
@@ -362,17 +345,98 @@
     .nav-item.active {
       color: var(--primary-color);
     }
+
+    /* App Detail Specific Styles */
+    .app-container {
+      padding: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .app-detail-header {
+      display: flex;
+      align-items: center;
+      background: white;
+      padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    .app-detail-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      margin-right: 16px;
+    }
+
+    .app-detail-info h1 {
+      margin: 0 0 4px;
+      font-size: 24px;
+    }
+
+    .app-detail-category {
+      background: #f0e6fe;
+      color: var(--primary-color);
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      display: inline-block;
+    }
+
+    .app-detail-description {
+      background: white;
+      padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .referral-button {
+      background: var(--primary-color);
+      color: white;
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .social-share {
+      background: white;
+      padding: 16px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .back-button {
+      background: none;
+      border: none;
+      color: white;
+      padding: 8px;
+      margin-right: 8px;
+      cursor: pointer;
+      font-size: 24px;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
   <!-- Age Warning Banner -->
-  <div class="age-warning" [hidden]="appState.currentView !== 'home'">
+  <div class="age-warning" id="age-warning">
     <strong>⚠️ 18+ Only:</strong> This content is intended for adults aged 18 and above. Please verify your age before downloading.
-    <button onclick="this.parentElement.style.display='none'" class="close-warning">✕</button>
+    <button onclick="document.getElementById('age-warning').style.display='none'" class="close-warning">✕</button>
   </div>
 
   <!-- Header for Home View -->
-  <header class="header" [hidden]="appState.currentView !== 'home'">
+  <header class="header" id="home-header">
     <h1 style="margin: 0; font-size: 20px;">Yono All Games</h1>
     <form method="GET" 
           action="."
@@ -385,23 +449,21 @@
   </header>
 
   <!-- Header for App Detail View -->
-  <header class="header" [hidden]="appState.currentView !== 'appDetail'">
-    <a on="tap:AMP.setState({appState: {currentView: 'home', selectedAppId: null, selectedApp: null}})" class="back-button">←</a>
+  <header class="header" id="app-detail-header" style="display: none;">
+    <a href="#" id="back-button" class="back-button">←</a>
     <span>App Details</span>
   </header>
 
   <!-- Home View Content -->
-  <div [hidden]="appState.currentView !== 'home'">
+  <div id="home-view">
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-content">
         <div class="brand-logo">
-          <amp-img src="/assets/icons/yono-games.svg"
-                   width="80"
-                   height="80"
-                   layout="fixed"
-                   alt="YONO ALL GAMES DOWNLOAD">
-          </amp-img>
+          <img src="/assets/icons/yono-games.svg"
+                 width="80"
+                 height="80"
+                 alt="YONO ALL GAMES DOWNLOAD">
         </div>
         <h2 class="hero-title">YONO ALL GAMES DOWNLOAD</h2>
         <p class="hero-subtitle">🎮 Official Gaming Apps & Referral Links</p>
@@ -458,48 +520,8 @@
     <!-- Featured Apps Section -->
     <section class="featured-apps">
       <h2 class="section-title">Download YONO Games</h2>
-      <div class="app-grid">
-        <amp-list width="auto"
-                  height="container"
-                  layout="fixed-height"
-                  src="/data/apps.json"
-                  binding="no">
-          <template type="amp-mustache">
-            {{#apps}}
-            <div class="app-card">
-              <div class="app-banner">
-                <amp-img class="app-icon"
-                         src="{{icon}}"
-                         width="80"
-                         height="80"
-                         layout="fixed"
-                         alt="{{name}} - Download YONO Game">
-                </amp-img>
-                <div class="app-info">
-                  <h3 class="app-name">{{name}}</h3>
-                  <span class="app-category">{{category}}</span>
-                </div>
-              </div>
-              <p class="app-desc">{{description}}</p>
-              <div class="app-actions">
-                <a href="{{referral}}" 
-                   class="download-button" 
-                   target="_blank" 
-                   rel="noopener"
-                   title="Download {{name}} APK">
-                  <span class="download-icon">⬇️</span>
-                  Download APK
-                </a>
-                <button on="tap:AMP.setState({appState: {currentView: 'appDetail', selectedAppId: '{{id}}', selectedApp: getAppById('{{id}}', appData)}})"
-                        class="details-button"
-                        title="More details about {{name}}">
-                  More Info
-                </button>
-              </div>
-            </div>
-            {{/apps}}
-          </template>
-        </amp-list>
+      <div class="app-grid" id="app-list-container">
+        <!-- Apps will be loaded here by JavaScript -->
       </div>
     </section>
 
@@ -530,26 +552,25 @@
   </div>
 
   <!-- App Detail View Content -->
-  <div [hidden]="appState.currentView !== 'appDetail'">
-    <div class="app-container" [hidden]="!appState.selectedApp.id">
-      <div class="app-header">
-        <amp-img class="app-icon"
-                 [src]="appState.selectedApp.icon"
+  <div id="app-detail-view" style="display: none;">
+    <div class="app-container">
+      <div class="app-detail-header">
+        <img id="app-detail-icon"
                  width="80"
                  height="80"
-                 layout="fixed">
-        </amp-img>
-        <div class="app-info">
-          <h1 [text]="appState.selectedApp.name"></h1>
-          <span class="app-category" [text]="appState.selectedApp.category"></span>
+                 alt="App Icon">
+        <div class="app-detail-info">
+          <h1 id="app-detail-name"></h1>
+          <span class="app-detail-category" id="app-detail-category"></span>
         </div>
       </div>
 
-      <div class="app-description">
-        <p [text]="appState.selectedApp.description"></p>
+      <div class="app-detail-description">
+        <p id="app-detail-description"></p>
       </div>
 
-      <a [href]="appState.selectedApp.referral"
+      <a href="#"
+         id="app-detail-referral"
          class="referral-button"
          target="_blank"
          rel="noopener">
@@ -557,36 +578,186 @@
       </a>
 
       <div class="social-share">
-        <amp-social-share type="system" width="40" height="40"></amp-social-share>
-        <amp-social-share type="whatsapp" width="40" height="40"></amp-social-share>
-        <amp-social-share type="facebook" width="40" height="40"></amp-social-share>
-        <amp-social-share type="twitter" width="40" height="40"></amp-social-share>
+        <div class="share-button" id="share-system">Share</div>
+        <div class="share-button" id="share-whatsapp">WhatsApp</div>
+        <div class="share-button" id="share-facebook">Facebook</div>
+        <div class="share-button" id="share-twitter">Twitter</div>
       </div>
     </div>
 
-    <div [hidden]="appState.selectedApp.id">
+    <div id="app-not-found" style="display: none;">
       <p style="text-align: center; margin-top: 50px;">App not found or invalid ID.</p>
     </div>
   </div>
 
   <!-- Bottom Navigation -->
   <nav class="bottom-nav">
-    <a href="#" on="tap:AMP.setState({appState: {currentView: 'home', selectedAppId: null, selectedApp: null}})" class="nav-item" [class]="appState.currentView === 'home' ? 'nav-item active' : 'nav-item'">
+    <a href="#" id="nav-home" class="nav-item active">
       <div>🏠</div>
       Home
     </a>
-    <a href="#categories" class="nav-item" [class]="appState.currentView === 'categories' ? 'nav-item active' : 'nav-item'">
+    <a href="#categories" id="nav-categories" class="nav-item">
       <div>📱</div>
       Categories
     </a>
-    <a href="#faq" class="nav-item" [class]="appState.currentView === 'faq' ? 'nav-item active' : 'nav-item'">
+    <a href="#faq" id="nav-faq" class="nav-item">
       <div>❓</div>
       FAQ
     </a>
-    <a href="#contact" class="nav-item" [class]="appState.currentView === 'contact' ? 'nav-item active' : 'nav-item'">
+    <a href="#contact" id="nav-contact" class="nav-item">
       <div>📧</div>
       Contact
     </a>
   </nav>
+
+  <script>
+    let allApps = [];
+
+    async function fetchApps() {
+      try {
+        const response = await fetch('/data/apps.json');
+        const data = await response.json();
+        allApps = data.apps;
+        renderAppList(allApps);
+        handleRouteChange();
+      } catch (error) {
+        console.error('Error fetching apps:', error);
+      }
+    }
+
+    function renderAppList(apps) {
+      const appListContainer = document.getElementById('app-list-container');
+      appListContainer.innerHTML = ''; // Clear existing content
+
+      apps.forEach(app => {
+        const appCard = `
+          <div class="app-card">
+            <div class="app-banner">
+              <img class="app-icon"
+                       src="${app.icon}"
+                       width="80"
+                       height="80"
+                       alt="${app.name} - Download YONO Game">
+                <div class="app-info">
+                  <h3 class="app-name">${app.name}</h3>
+                  <span class="app-category">${app.category}</span>
+                </div>
+              </div>
+              <p class="app-desc">${app.description}</p>
+              <div class="app-actions">
+                <a href="${app.referral}" 
+                   class="download-button" 
+                   target="_blank" 
+                   rel="noopener"
+                   title="Download ${app.name} APK">
+                  <span class="download-icon">⬇️</span>
+                  Download APK
+                </a>
+                <button class="details-button" data-app-id="${app.id}"
+                        title="More details about ${app.name}">
+                  More Info
+                </button>
+              </div>
+            </div>
+        `;
+        appListContainer.insertAdjacentHTML('beforeend', appCard);
+      });
+
+      // Add event listeners for "More Info" buttons
+      document.querySelectorAll('.details-button').forEach(button => {
+        button.addEventListener('click', (event) => {
+          const appId = event.target.dataset.appId;
+          navigateToAppDetail(appId);
+        });
+      });
+    }
+
+    function navigateToAppDetail(appId) {
+      const app = allApps.find(a => a.id === appId);
+      if (app) {
+        renderAppDetail(app);
+        history.pushState({ appId: appId }, '', `?id=${appId}`);
+        showView('appDetail');
+      } else {
+        showView('appNotFound');
+      }
+    }
+
+    function renderAppDetail(app) {
+      document.getElementById('app-detail-icon').src = app.icon;
+      document.getElementById('app-detail-name').textContent = app.name;
+      document.getElementById('app-detail-category').textContent = app.category;
+      document.getElementById('app-detail-description').textContent = app.description;
+      document.getElementById('app-detail-referral').href = app.referral;
+
+      // Social Share (basic implementation)
+      document.getElementById('share-system').onclick = () => navigator.share && navigator.share({ title: app.name, text: app.description, url: window.location.href });
+      document.getElementById('share-whatsapp').onclick = () => window.open(`https://wa.me/?text=${encodeURIComponent(`${app.name}: ${app.description} ${window.location.href}`)}`);
+      document.getElementById('share-facebook').onclick = () => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`);
+      document.getElementById('share-twitter').onclick = () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(`${app.name}: ${app.description}`)}&url=${encodeURIComponent(window.location.href)}`);
+    }
+
+    function showView(view) {
+      document.getElementById('home-view').style.display = 'none';
+      document.getElementById('app-detail-view').style.display = 'none';
+      document.getElementById('app-not-found').style.display = 'none';
+      document.getElementById('home-header').style.display = 'none';
+      document.getElementById('app-detail-header').style.display = 'none';
+
+      if (view === 'home') {
+        document.getElementById('home-view').style.display = 'block';
+        document.getElementById('home-header').style.display = 'flex';
+      } else if (view === 'appDetail') {
+        document.getElementById('app-detail-view').style.display = 'block';
+        document.getElementById('app-detail-header').style.display = 'flex';
+      } else if (view === 'appNotFound') {
+        document.getElementById('app-detail-view').style.display = 'block'; // Show app detail container
+        document.getElementById('app-not-found').style.display = 'block';
+        document.getElementById('app-detail-header').style.display = 'flex';
+      }
+      updateNavigation(view);
+    }
+
+    function updateNavigation(currentView) {
+      document.querySelectorAll('.bottom-nav .nav-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      if (currentView === 'home') {
+        document.getElementById('nav-home').classList.add('active');
+      } else if (currentView === 'categories') {
+        document.getElementById('nav-categories').classList.add('active');
+      } else if (currentView === 'faq') {
+        document.getElementById('nav-faq').classList.add('active');
+      } else if (currentView === 'contact') {
+        document.getElementById('nav-contact').classList.add('active');
+      }
+    }
+
+    function handleRouteChange() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const appId = urlParams.get('id');
+      if (appId) {
+        navigateToAppDetail(appId);
+      } else {
+        showView('home');
+      }
+    }
+
+    // Event listeners
+    document.getElementById('back-button').addEventListener('click', () => {
+      history.pushState({}, '', '/');
+      showView('home');
+    });
+
+    document.getElementById('nav-home').addEventListener('click', () => {
+      history.pushState({}, '', '/');
+      showView('home');
+    });
+
+    window.addEventListener('popstate', handleRouteChange);
+
+    // Initial load
+    fetchApps();
+  </script>
 </body>
 </html>
