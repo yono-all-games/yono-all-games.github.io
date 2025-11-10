@@ -7,8 +7,8 @@
     <meta name="description" content="Yono All Games is your ultimate destination for discovering, downloading, and enjoying all the latest mobile games from Yono. Your official source for all Yono Games.">
     <meta name="keywords" content="yono, all games, yono all games, yono games, mobile games, download yono games, yono app store">
     <meta name="google-site-verification" content="A9DE8jmYdqwkKq1dkctjtX1tCeZhly7iYz1Vl-og4CI" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="application/ld+json">
     {
@@ -41,14 +41,14 @@
                 </div>
                 <a href="blog.html" class="blog-link" style="text-decoration: none; color: white; background-color: #007bff; padding: 5px 10px; border-radius: 5px; position: absolute; top: 10px; right: 150px;">Blog</a>
                 <div class="social-share">
-                    <a href="https://wa.me/?text=Check%20out%20Yono%20All%20Games!%20https://yono-all-games.github.io/" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://t.me/share/url?url=https://yono-all-games.github.io/&text=Check%20out%20Yono%20All%20Games!" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://wa.me/?text=Check%20out%20Yono%20All%20Games!%20https://yono-all-games.github.io/" target="_blank" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://t.me/share/url?url=https://yono-all-games.github.io/&text=Check%20out%20Yono%20All%20Games!" target="_blank" aria-label="Share on Telegram"><i class="fab fa-telegram-plane"></i></a>
                 </div>
             </div>
             <h1>The Ultimate Destination for Yono All Games</h1>
             <p style="text-align:center; color:#555;">Welcome to the official home of Yono All Games! Your one-stop destination for discovering, downloading, and enjoying all the latest and greatest mobile games from the world of Yono. Dive into a universe of fun and adventure, all available for you in one place.</p>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search for games...">
+                <input type="text" id="searchInput" placeholder="Search for games..." aria-label="Search for games">
             </div>
         </div>
     </header>
@@ -56,6 +56,16 @@
         <div class="app-list">
         </div>
     </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             let count = localStorage.getItem('visitorCount');
@@ -66,55 +76,53 @@
             }
             localStorage.setItem('visitorCount', count);
             document.getElementById('visitorCount').innerText = count;
-        });
 
-        fetch('apps.json')
-            .then(response => response.json())
-            .then(data => {
-                const appList = document.querySelector('.app-list');
-                const searchInput = document.getElementById('searchInput');
+            const appList = document.querySelector('.app-list');
+            const searchInput = document.getElementById('searchInput');
 
-                function renderApps(apps) {
-                    appList.innerHTML = '';
-                    apps.forEach(app => {
-                        const appCard = document.createElement('div');
-                        appCard.classList.add('app-card');
+            const apps = [{"id":"101z","name":"101z","icon":"assets/icons/101z.svg","description":"Play and earn rewards with 101z gaming app","referral":"https://101zvip7.com/?code=398G6QR31H2&t=1762765894","category":"casino"},{"id":"567-slots","name":"567 Slots","icon":"assets/icons/567-slots.svg","description":"Experience thrilling slot games on 567 Slots","referral":"https://567slots-agent.com/?code=QCGRZE1X384&t=1762765939","category":"slots"},{"id":"777-game","name":"777 Game","icon":"assets/icons/777-game.svg","description":"777 Game - Your lucky gaming destination","referral":"https://www.777game3.com/?code=H533LN3EDLK&t=1762765975","category":"casino"},{"id":"789-jackpot","name":"789 Jackpot","icon":"assets/icons/789-jackpot.svg","description":"Win big with 789 Jackpot games","referral":"https://789jackpots.in/?code=J7ZEWQ1B6K7&t=1762766006","category":"casino"},{"id":"abc-rummy","name":"ABC Rummy","icon":"assets/icons/abc-rummy.svg","description":"Play classic rummy games on ABC Rummy","referral":"https://www.abcrummy00.com/?code=75CZ3W6XRS2&t=1762766047","category":"rummy"},{"id":"bingo-101","name":"Bingo 101","icon":"assets/icons/bingo-101.svg","description":"Join the exciting world of Bingo 101","referral":"https://bingo101o.com/?code=6YFKCFSDE54&t=1762766087","category":"bingo"},{"id":"bet-213","name":"Bet 213","icon":"assets/icons/bet-213.svg","description":"Your trusted betting companion","referral":"https://bet213app.com/?code=2QTNS6S3413&t=1762766145","category":"betting"},{"id":"club-inr","name":"Club INR","icon":"assets/icons/club-inr.svg","description":"Premium gaming club for Indian players","referral":"http://clubinr5.xyz/?code=9VCSD2M3Z4H&t=1762766169","category":"casino"},{"id":"game-rummy","name":"Game Rummy","icon":"assets/icons/game-rummy.svg","description":"The ultimate rummy gaming experience","referral":"https://gamerummyv.com/?code=Q6W7BP9BJD1&t=1762766209","category":"rummy"},{"id":"gogo-rummy","name":"GoGo Rummy","icon":"assets/icons/gogo-rummy.svg","description":"Fast-paced rummy action with GoGo","referral":"https://www.gogorummy24.com/?code=8FWZFF49QPY&t=1762766306","category":"rummy"},{"id":"hi-rummy","name":"Hi Rummy","icon":"assets/icons/hi-rummy.svg","description":"Say Hi to amazing rummy games","referral":"https://www.hirummyagent.info/?code=RX3MR41U5M5&t=1762766384","category":"rummy"},{"id":"hind-777","name":"Hind 777","icon":"assets/icons/hind-777.svg","description":"Indian gaming at its finest","referral":"https://www.hindi777agent.org/?code=7LFBLSFJJBU&t=1762766430","category":"casino"},{"id":"ind-rummy","name":"Ind Rummy","icon":"assets/icons/ind-rummy.svg","description":"Indian rummy games for everyone","referral":"https://indrummybet6.net/?code=JQ7J9ZNA1ZK&t=1762766474","category":"rummy"},{"id":"ind-slots","name":"Ind Slots","icon":"assets/icons/ind-slots.svg","description":"Indian themed slot games","referral":"indslots6.com/?code=T2QC941Q34D&t=1762766789","category":"slots"},{"id":"jaiho-777","name":"Jai Ho 777","icon":"assets/icons/jaiho-777.svg","description":"Celebrate wins with Jai Ho 777","referral":"https://www.jaiho777.asia/?code=GC2JV3X582C&t=1762766868","category":"casino"},{"id":"jaiho-rummy","name":"Jaiho Rummy","icon":"assets/icons/jaiho-rummy.svg","description":"Premium rummy games by Jaiho","referral":"https://jaihorummybonus.com/?code=E74RKZ1F7DQ&t=1762766905","category":"rummy"},{"id":"jaiho-slots","name":"Jaiho Slots","icon":"assets/icons/jaiho-slots.svg","description":"Exciting slot games by Jaiho","referral":"https://www.jaihoslots27.com/?code=EGPM1EU4BQL&t=1762766956","category":"slots"},{"id":"jaiho-spin","name":"Jaiho Spin","icon":"assets/icons/jaiho-spin.svg","description":"Spin and win with Jaiho","referral":"https://jaihospin16.com/?code=7TAD59PZY4X&t=1762767001","category":"slots"},{"id":"jaiho-win","name":"Jaiho Win","icon":"assets/icons/jaiho-win.svg","description":"Your path to winning with Jaiho","referral":"https://www.jaihowin18.com/?code=1XNYJRFGULC&t=1762767036","category":"casino"},{"id":"love-rummy","name":"Love Rummy","icon":"assets/icons/love-rummy.svg","description":"For the love of rummy games","referral":"https://www.9loverummy.com/?code=AFCVPC486UY&t=1762767073","category":"rummy"},{"id":"maha-games","name":"Maha Games","icon":"assets/icons/maha-games.svg","description":"Great games on Maha platform","referral":"https://mahagames.space/?code=J24AMNH9RMH&t=1762767111","category":"casino"},{"id":"mbm-bet","name":"MBM Bet","icon":"assets/icons/mbm-bet.svg","description":"Premium betting experience","referral":"https://www.mbmbet8.com/?code=UPHZFM8AB5D&t=1762767168","category":"betting"},{"id":"neta-vip","name":"Neta VIP","icon":"assets/icons/neta-vip.svg","description":"VIP gaming experience on Neta","referral":"https://www.neta1.vip/?code=DR02E6V8X9T&t=1762767216","category":"casino"},{"id":"ok-rummy","name":"OK Rummy","icon":"assets/icons/ok-rummy.svg","description":"Play rummy the OK way","referral":"https://www.okrummy13.com/?code=H2G7UGT9MVG&t=1762767251","category":"rummy"},{"id":"rumble-rummy","name":"Rumble Rummy","icon":"assets/icons/rumble-rummy.svg","description":"Experience the rumble of rummy","referral":"https://www.rumblerummy2.vip/?code=UC0NL5BWPSP&t=1762767286","category":"rummy"},{"id":"rummy-91","name":"Rummy 91","icon":"assets/icons/rummy-91.svg","description":"Classic rummy games on Rummy 91","referral":"https://www.rummy91q.bet/?code=4KTY3QB24FB&t=1762767336","category":"rummy"},{"id":"saga-slots","name":"Saga Slots","icon":"assets/icons/saga-slots.svg","description":"Epic slot adventures await","referral":"https://www.sagaslots6.com/?code=0QH1662RD6Y&t=1762767377","category":"slots"},{"id":"share-slots","name":"Share Slots","icon":"assets/icons/share-slots.svg","description":"Share the joy of slot gaming","referral":"https://share0055.com/?code=YAZ44QWT8GD&t=1762767418","category":"slots"},{"id":"slots-spin","name":"Slots Spin","icon":"assets/icons/slots-spin.svg","description":"Spin to win on amazing slots","referral":"https://slotsspink.com/?code=XJBP3JPJZSJ&t=1762767460","category":"slots"},{"id":"slots-winner","name":"Slots Winner","icon":"assets/icons/slots-winner.svg","description":"Be a winner at slot games","referral":"https://slotwinner.app/?code=K4E9BQRLQ5Z&t=1762767522","category":"slots"},{"id":"spin-101","name":"Spin 101","icon":"assets/icons/spin-101.svg","description":"Learn and earn with Spin 101","referral":"https://spin101.net/?code=P4CL2CP15S3&t=1762767551","category":"slots"},{"id":"spin-crush","name":"Spin Crush","icon":"assets/icons/spin-crush.svg","description":"Crush it with amazing spins","referral":"https://2shisgjsqawwhsagui7c.Safelyearnmillionsbysharingonepersonaqfxzqyfw.com/?code=BHFVJQD59M8&t=1762767583","category":"slots"},{"id":"spin-gold","name":"Spin Gold","icon":"assets/icons/spin-gold.svg","description":"Spin for golden rewards","referral":"https://spingoldappagents.com/?code=HLTHBSSGDPK&t=1762767625","category":"slots"},{"id":"spin-winner","name":"Spin Winner","icon":"assets/icons/spin-winner.svg","description":"Be a winner with every spin","referral":"https://spinwinner27.com/?code=SDN5U16BVJS&t=1762767660","category":"slots"},{"id":"spin-777","name":"Spin 777","icon":"assets/icons/spin-777.svg","description":"Lucky 777 spins await you","referral":"spin777l.com/?code=YLW3FVHFXL9&t=1762767701","category":"slots"},{"id":"yes-spin","name":"Yes Spin","icon":"assets/icons/yes-spin.svg","description":"Say yes to amazing spins","referral":"https://www.yesspin22.com/?code=8FWZUM1L3WW&t=1762767738","category":"slots"},{"id":"yono-arcade","name":"Yono Arcade","icon":"assets/icons/yono-arcade.svg","description":"Classic arcade games by Yono","referral":"https://uonoarcadeapp3.com/?code=96LC9ZPWY4N&t=1762767765","category":"arcade"},{"id":"yono-games","name":"Yono Games","icon":"assets/icons/yono-games.svg","description":"Premium gaming with Yono","referral":"https://yonobonus.com/?code=GK1NJX4KAZ5&t=1762767799","category":"casino"},{"id":"yono-rummy","name":"Yono Rummy","icon":"assets/icons/yono-rummy.svg","description":"Play rummy the Yono way","referral":"https://yonorummymm.com/?code=VIPYE23CBYW&t=1762767839","category":"rummy"},{"id":"yono-slots","name":"Yono Slots","icon":"assets/icons/yono-slots.svg","description":"Premium slots by Yono","referral":"https://www.yonoslotsz.com/?code=V91FHG9PZSQ&t=1762767897","category":"slots"},{"id":"yono-vip","name":"Yono VIP","icon":"assets/icons/yono-vip.svg","description":"VIP gaming experience by Yono","referral":"https://yonovipt.com/?code=3CRP1U1PMPQ&t=1762766684","category":"casino"},{"id":"yon-777","name":"Yon 777","icon":"assets/icons/yon-777.svg","description":"Lucky gaming with Yon 777","referral":"https://referyono777.vip/?code=1JF3W2FT7AQ&t=1762767929","category":"casino"}];
 
-                        const appIcon = document.createElement('img');
-                        appIcon.src = app.icon;
-                        appIcon.alt = app.name + " icon";
-                        appCard.appendChild(appIcon);
+            function renderApps(apps) {
+                appList.innerHTML = '';
+                apps.forEach(app => {
+                    const appCard = document.createElement('div');
+                    appCard.classList.add('app-card');
 
-                        const appInfo = document.createElement('div');
-                        appInfo.classList.add('app-info');
-                        appCard.appendChild(appInfo);
+                    const appIcon = document.createElement('img');
+                    appIcon.src = app.icon;
+                    appIcon.alt = app.name + " icon";
+                    appCard.appendChild(appIcon);
 
-                        const appName = document.createElement('h3');
-                        appName.textContent = app.name;
-                        appInfo.appendChild(appName);
+                    const appInfo = document.createElement('div');
+                    appInfo.classList.add('app-info');
+                    appCard.appendChild(appInfo);
 
-                        const appDescription = document.createElement('p');
-                        appDescription.textContent = app.description;
-                        appInfo.appendChild(appDescription);
+                    const appName = document.createElement('h3');
+                    appName.textContent = app.name;
+                    appInfo.appendChild(appName);
 
-                        const downloadLink = document.createElement('a');
-                        downloadLink.href = app.referral;
-                        downloadLink.textContent = 'Download';
-                        downloadLink.classList.add('download-button');
-                        appCard.appendChild(downloadLink);
+                    const appDescription = document.createElement('p');
+                    appDescription.textContent = app.description;
+                    appInfo.appendChild(appDescription);
 
-                        appList.appendChild(appCard);
-                    });
-                }
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = app.referral;
+                    downloadLink.textContent = 'Download';
+                    downloadLink.classList.add('download-button');
+                    appCard.appendChild(downloadLink);
 
-                renderApps(data.apps);
-
-                searchInput.addEventListener('input', () => {
-                    const searchTerm = searchInput.value.toLowerCase();
-                    const filteredApps = data.apps.filter(app => app.name.toLowerCase().includes(searchTerm));
-                    renderApps(filteredApps);
+                    appList.appendChild(appCard);
                 });
+            }
+
+            renderApps(apps);
+
+            searchInput.addEventListener('input', () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                const filteredApps = apps.filter(app => app.name.toLowerCase().includes(searchTerm));
+                renderApps(filteredApps);
             });
+        });
     </script>
 </body>
 </html>
