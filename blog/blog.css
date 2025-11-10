@@ -1,16 +1,17 @@
 
 body {
-    background-color: #004d00;
+    background-color: #f0f0f0;
+    color: #333;
+    font-family: sans-serif;
 }
 
 .blog-container {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background: #006400;
+    background: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    color: white;
 }
 
 .blog-header {
@@ -18,13 +19,15 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
 }
 
 .home-button {
     display: inline-block;
     padding: 10px 15px;
-    background-color: #ffd700;
-    color: #004d00;
+    background-color: #333;
+    color: #fff;
     text-decoration: none;
     border-radius: 5px;
     font-size: 16px;
@@ -36,19 +39,19 @@ body {
 
 .social-share a {
     font-size: 24px;
-    color: #ffd700;
+    color: #333;
     margin-left: 15px;
     text-decoration: none;
 }
 
 .social-share a:hover {
-    color: #ffc700;
+    color: #000;
 }
 
 .back-link {
     display: block;
     margin-bottom: 20px;
-    color: #ffd700;
+    color: #333;
     text-decoration: none;
 }
 
@@ -59,13 +62,12 @@ body {
 .blog-post h1 {
     font-size: 2.5em;
     margin-bottom: 20px;
-    color: #ffd700;
+    color: #333;
 }
 
 .blog-post p {
     line-height: 1.6;
     margin-bottom: 15px;
-    color: #f5f5f5;
 }
 
 .blog-list-item {
@@ -80,9 +82,9 @@ body {
 
 .blog-list-item a {
     text-decoration: none;
-    color: #ffd700;
+    color: #333;
 }
 
 .blog-list-item a:hover {
-    color: #ffc700;
+    color: #000;
 }
