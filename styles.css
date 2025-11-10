@@ -2,7 +2,8 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
-    background-color: #f9f9f9;
+    background-color: #004d00;
+    color: white;
 }
 
 .container {
@@ -10,7 +11,7 @@ body {
 }
 
 .header {
-    background-color: white;
+    background-color: #006400;
     padding: 20px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
@@ -24,7 +25,7 @@ body {
 
 .visitor-counter {
     font-size: 14px;
-    color: #555;
+    color: white;
 }
 
 .visitor-counter .fa-eye {
@@ -33,13 +34,13 @@ body {
 
 .social-share a {
     font-size: 20px;
-    color: #555;
+    color: #ffd700;
     margin-left: 15px;
     transition: color 0.2s ease;
 }
 
 .social-share a:hover {
-    color: #007aff;
+    color: #ffc700;
 }
 
 .header h1 {
@@ -47,6 +48,7 @@ body {
     font-size: 28px;
     font-weight: 700;
     margin: 0;
+    color: white;
 }
 
 .search-container {
@@ -58,8 +60,10 @@ body {
     width: 80%;
     padding: 10px;
     border-radius: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #ffd700;
+    background-color: #006400;
     font-size: 16px;
+    color: white;
 }
 
 .app-list {
@@ -70,7 +74,7 @@ body {
 }
 
 .app-card {
-    background-color: white;
+    background-color: #006400;
     border-radius: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     display: flex;
@@ -93,18 +97,19 @@ body {
     margin: 0;
     font-size: 18px;
     font-weight: 500;
+    color: #ffd700;
 }
 
 .app-info p {
-    color: #888;
+    color: white;
     margin: 5px 0 0;
     font-size: 14px;
 }
 
 .download-button {
     display: inline-block;
-    background-color: #007aff;
-    color: white;
+    background-color: #ffd700;
+    color: #004d00;
     padding: 8px 18px;
     text-decoration: none;
     border-radius: 20px;
@@ -114,5 +119,6 @@ body {
 }
 
 .download-button:hover {
-    background-color: #0056b3;
+    background-color: #004d00;
+    color: #ffd700;
 }
