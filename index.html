@@ -3,131 +3,172 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Yono All Games | Download All Gaming Apps</title>
+<title>Yono Games Hub | All YONO Games Download</title>
+<meta name="description" content="Yono Games Hub - Download all YONO casino, rummy, slots & gaming apps with referral bonuses.">
 
 <style>
-/* ===== Base Reset ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui, sans-serif;
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#0b0115;color:#fff;}
+
+/* HEADER */
+header{
+  background:linear-gradient(45deg,#6a00ff,#b200ff);
+  padding:18px;
+  font-size:1.7rem;
+  font-weight:bold;
+  text-align:center;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 0 20px #9b13ff;
 }
 
-body {
-  background: #f4f5ff;
-  color: #222;
+/* HERO SECTION */
+.hero {
+  text-align:center;
+  padding:25px 10px;
+}
+.hero h2 {
+  font-size:1.4rem;
+  font-weight:600;
+}
+.hero p {
+  opacity:.8;
+  margin-top:5px;
 }
 
-/* ===== Top Header ===== */
-header {
-  background: #944cf3;
-  color: #fff;
-  padding: 18px;
-  font-size: 1.6rem;
-  font-weight: bold;
-  text-align: center;
-  position: sticky;
-  top: 0;
+/* SEARCH BAR */
+.search-box { padding:12px; }
+.search-box input{
+  width:100%;
+  padding:12px;
+  font-size:1rem;
+  border-radius:12px;
+  background:#1a0b2c;
+  border:2px solid #9b13ff;
+  color:#fff;
+  outline:none;
 }
 
-/* ===== Search Bar ===== */
-.search-box {
-  padding: 12px;
+/* CATEGORY TABS */
+.category-tabs{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:12px;
+  white-space:nowrap;
 }
-.search-box input {
-  width: 100%;
-  padding: 10px 16px;
-  font-size: 1rem;
-  border-radius: 12px;
-  border: 2px solid #944cf3;
-  outline: none;
+.category-tabs button{
+  border:none;
+  padding:8px 16px;
+  border-radius:20px;
+  background:#1c1c1c;
+  color:#d1d1d1;
+  cursor:pointer;
 }
-
-/* ===== Category Tabs ===== */
-.category-tabs {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding: 12px;
-  white-space: nowrap;
-}
-.category-tabs button {
-  border: none;
-  padding: 8px 14px;
-  border-radius: 20px;
-  background: #ddd;
-  cursor: pointer;
-}
-.category-tabs button.active {
-  background: #944cf3;
-  color: white;
+.category-tabs button.active{
+  background:#9b13ff;
+  color:#fff;
+  box-shadow:0 0 10px #8a13ff;
 }
 
-/* ===== App Cards ===== */
-#app-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 14px;
-  padding: 12px;
+/* APP GRID */
+#app-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+  gap:14px;
+  padding:12px;
 }
 
-.card {
-  background: #fff;
-  padding: 12px;
-  border-radius: 14px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.09);
-  transition: .2s;
+/* CARD */
+.card{
+  background:#1a0b2c;
+  border-radius:14px;
+  text-align:center;
+  padding:14px;
+  border:1px solid #5600ff;
+  transition:.25s;
 }
-.card:hover {
-  transform: translateY(-3px);
+.card:hover{
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 0 18px #8a13ff;
+}
+.card img{
+  width:60px;
+  height:60px;
+  margin-bottom:6px;
+}
+.card h4{
+  font-size:1rem;
+  margin:6px 0;
+  color:#fff;
+}
+.card p{
+  font-size:0.75rem;
+  opacity:.7;
+  height:35px;
 }
 
-.card img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 6px;
+/* BUTTON */
+.card a{
+  display:inline-block;
+  padding:8px 12px;
+  background:#8a13ff;
+  color:white;
+  text-decoration:none;
+  border-radius:10px;
+  margin-top:8px;
+  font-size:0.85rem;
+  box-shadow:0 0 10px #8a13ff;
+}
+.card a:hover{
+  background:#b200ff;
 }
 
-.card h4 {
-  font-size: 1rem;
-  font-weight: bold;
-  margin: 4px 0;
+/* BOTTOM NAV */
+.navbar{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#09000f;
+  display:flex;
+  justify-content:space-around;
+  padding:12px 0;
+  border-top:2px solid #6a00ff;
 }
-
-.card p {
-  font-size: 0.75rem;
-  margin-bottom: 8px;
-  opacity: .7;
-}
-
-.card a {
-  display: inline-block;
-  padding: 8px;
-  background: #944cf3;
-  color: white;
-  border-radius: 10px;
-  text-decoration: none;
-  font-size: 0.85rem;
+.navbar a{
+  color:#fff;
+  text-decoration:none;
+  font-size:0.9rem;
 }
 </style>
 </head>
 
 <body>
 
-<header>🎮 Yono All Games</header>
+<header>🔥 Yono Games Hub</header>
+
+<div class="hero">
+  <h2>Download All YONO Apps</h2>
+  <p>Install & earn. Har game ka referral bonus. (Hinglish)</p>
+</div>
 
 <div class="search-box">
-  <input id="search" type="search" placeholder="Search games…" />
+  <input id="search" type="search" placeholder="Search games... (Rummy, Casino, Slots)">
 </div>
 
 <div class="category-tabs" id="categoryTabs"></div>
 
 <div id="app-list"></div>
 
+<div class="navbar">
+  <a href="#">Home</a>
+  <a href="#">Top Apps</a>
+  <a href="#">Support</a>
+</div>
+
 <script>
-/* Fetch apps.json */
 let appsData = [];
 const appList = document.getElementById("app-list");
 const tabs = document.getElementById("categoryTabs");
@@ -141,39 +182,34 @@ fetch("apps.json")
     displayApps(appsData);
   });
 
-/* Display app cards */
-function displayApps(apps) {
+function displayApps(apps){
   appList.innerHTML = "";
-  apps.forEach(app => {
+  apps.forEach(app=>{
     appList.innerHTML += `
       <div class="card">
         <img src="${app.icon}" alt="${app.name}">
         <h4>${app.name}</h4>
         <p>${app.description}</p>
-        <a href="${app.referral}" target="_blank">Download</a>
-      </div>
-    `;
+        <a href="${app.referral}" target="_blank">Install</a>
+      </div>`;
   });
 }
 
-/* Generate Category Tabs */
-function generateCategories() {
+function generateCategories(){
   const categories = ["all", ...new Set(appsData.map(a => a.category))];
   tabs.innerHTML = categories.map(c => `<button data-cat="${c}">${c}</button>`).join("");
 
   document.querySelectorAll(".category-tabs button").forEach(btn =>
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", ()=>{
       document.querySelectorAll(".category-tabs button").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
-
       const filter = btn.dataset.cat;
       displayApps(filter === "all" ? appsData : appsData.filter(a => a.category === filter));
     })
   );
 }
 
-/* Search filter */
-searchField.addEventListener("keyup", () => {
+searchField.addEventListener("keyup",()=>{
   const keyword = searchField.value.toLowerCase();
   displayApps(appsData.filter(app => app.name.toLowerCase().includes(keyword)));
 });
