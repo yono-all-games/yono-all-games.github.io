@@ -1,219 +1,51 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Yono Games Hub | All YONO Games Download</title>
-<meta name="description" content="Yono Games Hub - Download all YONO casino, rummy, slots & gaming apps with referral bonuses.">
-
-<style>
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#0b0115;color:#fff;}
-
-/* HEADER */
-header{
-  background:linear-gradient(45deg,#6a00ff,#b200ff);
-  padding:18px;
-  font-size:1.7rem;
-  font-weight:bold;
-  text-align:center;
-  position:sticky;
-  top:0;
-  z-index:10;
-  box-shadow:0 0 20px #9b13ff;
-}
-
-/* HERO SECTION */
-.hero {
-  text-align:center;
-  padding:25px 10px;
-}
-.hero h2 {
-  font-size:1.4rem;
-  font-weight:600;
-}
-.hero p {
-  opacity:.8;
-  margin-top:5px;
-}
-
-/* SEARCH BAR */
-.search-box { padding:12px; }
-.search-box input{
-  width:100%;
-  padding:12px;
-  font-size:1rem;
-  border-radius:12px;
-  background:#1a0b2c;
-  border:2px solid #9b13ff;
-  color:#fff;
-  outline:none;
-}
-
-/* CATEGORY TABS */
-.category-tabs{
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  padding:12px;
-  white-space:nowrap;
-}
-.category-tabs button{
-  border:none;
-  padding:8px 16px;
-  border-radius:20px;
-  background:#1c1c1c;
-  color:#d1d1d1;
-  cursor:pointer;
-}
-.category-tabs button.active{
-  background:#9b13ff;
-  color:#fff;
-  box-shadow:0 0 10px #8a13ff;
-}
-
-/* APP GRID */
-#app-list{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
-  gap:14px;
-  padding:12px;
-}
-
-/* CARD */
-.card{
-  background:#1a0b2c;
-  border-radius:14px;
-  text-align:center;
-  padding:14px;
-  border:1px solid #5600ff;
-  transition:.25s;
-}
-.card:hover{
-  transform:translateY(-4px) scale(1.02);
-  box-shadow:0 0 18px #8a13ff;
-}
-.card img{
-  width:60px;
-  height:60px;
-  margin-bottom:6px;
-}
-.card h4{
-  font-size:1rem;
-  margin:6px 0;
-  color:#fff;
-}
-.card p{
-  font-size:0.75rem;
-  opacity:.7;
-  height:35px;
-}
-
-/* BUTTON */
-.card a{
-  display:inline-block;
-  padding:8px 12px;
-  background:#8a13ff;
-  color:white;
-  text-decoration:none;
-  border-radius:10px;
-  margin-top:8px;
-  font-size:0.85rem;
-  box-shadow:0 0 10px #8a13ff;
-}
-.card a:hover{
-  background:#b200ff;
-}
-
-/* BOTTOM NAV */
-.navbar{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  background:#09000f;
-  display:flex;
-  justify-content:space-around;
-  padding:12px 0;
-  border-top:2px solid #6a00ff;
-}
-.navbar a{
-  color:#fff;
-  text-decoration:none;
-  font-size:0.9rem;
-}
-</style>
+    <title>App Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body>
+    <div class="container">
+        <h1>App Store</h1>
+        <div class="app-list">
+        </div>
+    </div>
+    <script>
+        fetch('apps.json')
+            .then(response => response.json())
+            .then(data => {
+                const appList = document.querySelector('.app-list');
+                data.apps.forEach(app => {
+                    const appCard = document.createElement('div');
+                    appCard.classList.add('app-card');
 
-<header>🔥 Yono Games Hub</header>
+                    const appIcon = document.createElement('img');
+                    appIcon.src = app.icon;
+                    appCard.appendChild(appIcon);
 
-<div class="hero">
-  <h2>Download All YONO Apps</h2>
-  <p>Install & earn. Har game ka referral bonus. (Hinglish)</p>
-</div>
+                    const appInfo = document.createElement('div');
+                    appInfo.classList.add('app-info');
+                    appCard.appendChild(appInfo);
 
-<div class="search-box">
-  <input id="search" type="search" placeholder="Search games... (Rummy, Casino, Slots)">
-</div>
+                    const appName = document.createElement('h3');
+                    appName.textContent = app.name;
+                    appInfo.appendChild(appName);
 
-<div class="category-tabs" id="categoryTabs"></div>
+                    const appDescription = document.createElement('p');
+                    appDescription.textContent = app.description;
+                    appInfo.appendChild(appDescription);
 
-<div id="app-list"></div>
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = app.referral;
+                    downloadLink.textContent = 'Download';
+                    downloadLink.classList.add('download-button');
+                    appCard.appendChild(downloadLink);
 
-<div class="navbar">
-  <a href="#">Home</a>
-  <a href="#">Top Apps</a>
-  <a href="#">Support</a>
-</div>
-
-<script>
-let appsData = [];
-const appList = document.getElementById("app-list");
-const tabs = document.getElementById("categoryTabs");
-const searchField = document.getElementById("search");
-
-fetch("apps.json")
-  .then(res => res.json())
-  .then(data => {
-    appsData = data.apps;
-    generateCategories();
-    displayApps(appsData);
-  });
-
-function displayApps(apps){
-  appList.innerHTML = "";
-  apps.forEach(app=>{
-    appList.innerHTML += `
-      <div class="card">
-        <img src="${app.icon}" alt="${app.name}">
-        <h4>${app.name}</h4>
-        <p>${app.description}</p>
-        <a href="${app.referral}" target="_blank">Install</a>
-      </div>`;
-  });
-}
-
-function generateCategories(){
-  const categories = ["all", ...new Set(appsData.map(a => a.category))];
-  tabs.innerHTML = categories.map(c => `<button data-cat="${c}">${c}</button>`).join("");
-
-  document.querySelectorAll(".category-tabs button").forEach(btn =>
-    btn.addEventListener("click", ()=>{
-      document.querySelectorAll(".category-tabs button").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      const filter = btn.dataset.cat;
-      displayApps(filter === "all" ? appsData : appsData.filter(a => a.category === filter));
-    })
-  );
-}
-
-searchField.addEventListener("keyup",()=>{
-  const keyword = searchField.value.toLowerCase();
-  displayApps(appsData.filter(app => app.name.toLowerCase().includes(keyword)));
-});
-</script>
-
+                    appList.appendChild(appCard);
+                });
+            });
+    </script>
 </body>
 </html>
