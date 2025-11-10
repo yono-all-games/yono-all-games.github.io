@@ -433,21 +433,20 @@
   <!-- Featured Apps Section -->
   <section class="featured-apps">
     <h2 class="section-title">Download YONO Games</h2>
-    <amp-list width="auto"
-              height="auto"
-              layout="fixed-height"
-              src="data/apps.json"
-              items="apps"
-              binding="no">
-      <template type="amp-mustache">
-        <div class="app-grid">
-          {{#.}}
+    <div class="app-grid">
+      <amp-list width="auto"
+                height="container"
+                layout="fixed-height"
+                src="/data/apps.json"
+                binding="no">
+        <template type="amp-mustache">
+          {{#apps}}
           <div class="app-card">
-            <div class="app-header">
+            <div class="app-banner">
               <amp-img class="app-icon"
                        src="{{icon}}"
-                       width="64"
-                       height="64"
+                       width="80"
+                       height="80"
                        layout="fixed"
                        alt="{{name}} - Download YONO Game">
               </amp-img>
@@ -473,7 +472,7 @@
               </a>
             </div>
           </div>
-          {{/.}}
+          {{/apps}}
         </div>
       </template>
     </amp-list>
