@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://yono-all-games.github.io/sitemap.xml
